@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - 5000:5000
+    environment:
+      # Password is taken from the host environment.
+      DB_USER: nhltop
+      DB_PASSWORD: "${DB_PASSWORD}" 
+      DB_HOST: database
+      DB_NAME: nhltop
+    networks:
+      - private
+
+  database:
+    image: mariadb:10.3
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: yes
+      MARIADB_DATABASE: nhltop
+      MARIADB_USER: nhltop
+      MARIADB_PASSWORD: "${DB_PASSWORD}"
+    networks:
+      - private
+
+networks:
+  private:

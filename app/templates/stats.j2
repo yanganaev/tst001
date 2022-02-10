@@ -1,0 +1,84 @@
+{% extends "base.j2" %}
+{% block title %}{{p.fullName}}{% endblock %}
+{% block content %}
+{% if p %}
+<table>
+  <caption>Player: {{p.fullName}}</caption>
+  <tr>
+    <th>Nationality</th>
+    <th>Birth date</th>
+    <th>Birth city</th>
+    <th>Team</th>
+    <th>Number</th>
+    <th>Position</th>
+  </tr>
+  <tr>
+    <td>{{p.nationality}}</td>
+    <td>{{p.birthDate}}</td>
+    <td>{{p.birthCity}}, {{p.birthCountry}}</td>
+    <td>{{p.teamName}}</td>
+    <td>{{p.jerseyNumber}}</td>
+    <td>{{p.positionName}}</td>
+  </tr>
+</table>
+{% endif %}
+<br>
+{% if g %}
+<table>
+  <caption>Final game ({{g.gameDate}})</caption>
+  <tr>
+    <th>{{g.team_away_name}}</th>
+    <th>-</th>
+    <th>{{g.team_home_name}}</th>
+  </tr>
+  <tr>
+    <td style="text-align: right;">{{g.team_away_score}}</td>
+    <td>:</td>
+    <td>{{g.team_home_score}}</td>
+  </tr>
+</table>
+{% endif %}
+<br>
+{% if p %}
+  {% if p.positionName == 'Goalie' %}
+    <table class="stat">
+      <caption>Player statistics for the game</caption>
+      <tr><td>Time on ice</td><td>{{p.goalieStats.timeOnIce}}</td></tr>
+      <tr><td>assists</td><td>{{p.goalieStats.assists}}</td></tr>
+      <tr><td>goals</td><td>{{p.goalieStats.goals}}</td></tr>
+      <tr><td>pim</td><td>{{p.goalieStats.pim}}</td></tr>
+      <tr><td>shots</td><td>{{p.goalieStats.shots}}</td></tr>
+      <tr><td>saves</td><td>{{p.goalieStats.saves}}</td></tr>
+      <tr><td>Power Play Saves</td><td>{{p.goalieStats.powerPlaySaves}}</td></tr>
+      <tr><td>Short Handed Saves</td><td>{{p.goalieStats.shortHandedSaves}}</td></tr>
+      <tr><td>Even Saves</td><td>{{p.goalieStats.evenSaves}}</td></tr>
+      <tr><td>Short Handed Shots Against</td><td>{{p.goalieStats.shortHandedShotsAgainst}}</td></tr>
+      <tr><td>Even Shots Against</td><td>{{p.goalieStats.evenShotsAgainst}}</td></tr>
+      <tr><td>Power Play Shots Against</td><td>{{p.goalieStats.powerPlayShotsAgainst}}</td></tr>
+    </table>
+  {% else %}
+    <table class="stat">
+      <caption>Player statistics for the game</caption>
+      <tr><td>Time On Ice</td><td>{{p.skaterStats.timeOnIce}}</td></tr>
+      <tr><td>Assists</td><td>{{p.skaterStats.assists}}</td></tr>
+      <tr><td>Goals</td><td>{{p.skaterStats.goals}}</td></tr>
+      <tr><td>Shots</td><td>{{p.skaterStats.shots}}</td></tr>
+      <tr><td>Hits</td><td>{{p.skaterStats.hits}}</td></tr>
+      <tr><td>Power Play Goals</td><td>{{p.skaterStats.powerPlayGoals}}</td></tr>
+      <tr><td>Power Play Assists</td><td>{{p.skaterStats.powerPlayAssists}}</td></tr>
+      <tr><td>Penalty Minutes</td><td>{{p.skaterStats.penaltyMinutes}}</td></tr>
+      <tr><td>FaceOff Wins</td><td>{{p.skaterStats.faceOffWins}}</td></tr>
+      <tr><td>Faceoff Taken</td><td>{{p.skaterStats.faceoffTaken}}</td></tr>
+      <tr><td>Takeaways</td><td>{{p.skaterStats.takeaways}}</td></tr>
+      <tr><td>Giveaways</td><td>{{p.skaterStats.giveaways}}</td></tr>
+      <tr><td>Shorthanded Goals</td><td>{{p.skaterStats.shortHandedGoals}}</td></tr>
+      <tr><td>Shorthanded Assists</td><td>{{p.skaterStats.shortHandedAssists}}</td></tr>
+      <tr><td>Blocked</td><td>{{p.skaterStats.blocked}}</td></tr>
+      <tr><td>PlusMinus</td><td>{{p.skaterStats.plusMinus}}</td></tr>
+      <tr><td>Even Time On Ice</td><td>{{p.skaterStats.evenTimeOnIce}}</td></tr>
+      <tr><td>Power Play Time On Ice</td><td>{{p.skaterStats.powerPlayTimeOnIce}}</td></tr>
+      <tr><td>Shorthanded Time On Ice</td><td>{{p.skaterStats.shortHandedTimeOnIce}}</td></tr>
+    </table>
+  {% endif %}
+{% endif %}
+{% endblock %}

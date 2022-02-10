@@ -1,0 +1,49 @@
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+   font-size: 150%;
+}
+
+h2 {
+   font-size: 110%;
+}
+
+table {
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+}
+th {
+    font-weight: bold;
+    padding: 3px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+td {
+    border: 1px solid #dddddd;
+    padding: 3px;
+}
+caption {
+   font-weight: bold;
+}
+
+.stat tbody tr td:first-child {
+   text-align: right;
+}
+
+#con {
+   min-height:100%;
+   position:relative;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 50%;
+    color: gray;
+}
